@@ -48,6 +48,9 @@ const toDoSlice = createSlice({
         return todo;
       });
     },
+    RemoveAll(state) {
+      state.toDos = [];
+    },
   },
 });
 

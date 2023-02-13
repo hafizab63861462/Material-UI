@@ -2,8 +2,6 @@ import TypographyText from "./common/typographyText";
 import CommonButton from "./common/commonButton";
 import CommonTextField from "./common/commonTextField";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { toDoActions } from "../store";
 import { makeStyles } from "@material-ui/core/styles";
 import Stack from "@mui/material/Stack";
 
@@ -15,20 +13,18 @@ const useStyles = makeStyles({
   },
 });
 
-const AddTask = () => {
-  const dispatch = useDispatch();
+const AddTask = ({ addAction }) => {
   const [newTask, setNewTask] = useState("");
   const classes = useStyles();
 
   const addTask = () => {
     if (newTask) {
-      dispatch(
-        toDoActions.Add({
-          title: newTask,
-          status: false,
-          isShowUpdateField: false,
-        })
-      );
+      let obj = {
+        title: newTask,
+        status: false,
+        isShowUpdateField: false,
+      };
+      addAction(obj);
       setNewTask("");
     }
   };
