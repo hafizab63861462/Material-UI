@@ -26,7 +26,6 @@ const toDoSlice = createSlice({
       });
     },
     Delete(state, action) {
-      debugger;
       state.toDos = state.toDos.filter((task) => task.id != action.payload.id);
     },
     Update(state, action) {
