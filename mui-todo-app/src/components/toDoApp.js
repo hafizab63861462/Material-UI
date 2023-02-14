@@ -28,6 +28,11 @@ const useStyles = makeStyles(() => ({
 }));
 const ToDoApp = ({ removeAllAction, totalTask, doneTask }) => {
   const classes = useStyles();
+  const percentage = totalTask ? (doneTask / totalTask) * 100 : 0;
+  console.log(percentage);
+  const divStyle = {
+    backgroundImage: `linear-gradient(to right, yellow ${percentage}%, white 0%)`,
+  };
 
   return (
     <Card className={classes.card}>
@@ -37,7 +42,7 @@ const ToDoApp = ({ removeAllAction, totalTask, doneTask }) => {
       </CardContent>
 
       <CardActions className={classes.listRow}>
-        <div className={classes.taskDone}>
+        <div className={classes.taskDone} style={divStyle}>
           {doneTask} of {totalTask} task Done
         </div>
         <CommonButton

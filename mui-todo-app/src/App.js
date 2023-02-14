@@ -1,6 +1,5 @@
 import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
-import ToDoApp from "./components/toDoApp";
 import { ToDoAppContainer } from "./container/toDoAppContainer";
 
 const useStyles = makeStyles(() => ({
