@@ -1,10 +1,7 @@
-import { useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/material";
-import Stack from "@mui/material/Stack";
 import TypographyText from "./common/TypographyText";
-import ButtonField from "./common/ButtonField";
-import InputField from "./common/InputField";
+import InputForm from "./common/InputForm";
 
 const useStyles = makeStyles({
   heading: {
@@ -15,20 +12,8 @@ const useStyles = makeStyles({
 });
 
 const AddTask = ({ addAction }) => {
-  const [taskTitle, setTaskTitle] = useState("");
   const classes = useStyles();
 
-  const addTask = () => {
-    if (taskTitle) {
-      let obj = {
-        title: taskTitle,
-        status: false,
-        isShowUpdateField: false,
-      };
-      addAction(obj);
-      setTaskTitle("");
-    }
-  };
   return (
     <Box component="div">
       <TypographyText
@@ -38,17 +23,15 @@ const AddTask = ({ addAction }) => {
         text="TODOLIST"
         gutterBottom
       />
-
-      <Stack spacing={2} direction="row">
-        <InputField
-          label="Enter text here"
-          variant="outlined"
-          value={taskTitle}
-          onChange={(e) => setTaskTitle(e.target.value)}
-        />
-
-        <ButtonField variant="contained" onClick={addTask} text="ADD" />
-      </Stack>
+      <InputForm
+        label="Enter text here"
+        variant="outlined"
+        registerName={"task_title"}
+        action={addAction}
+        buttonVariant="contained"
+        buttonType="submit"
+        buttonText="ADD"
+      />
     </Box>
   );
 };

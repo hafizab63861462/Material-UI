@@ -1,14 +1,16 @@
 import Button from "@mui/material/Button";
-const ButtonField = ({ variant, onClick, text, id, className }) => {
+const ButtonField = ({ variant, onClick, text, className, type }) => {
   const handleClick = () => {
-    if (id || id === 0) {
-      onClick(id);
-    } else {
-      onClick();
-    }
+    onClick();
   };
+
   return (
-    <Button variant={variant} onClick={handleClick} className={className}>
+    <Button
+      variant={variant}
+      type={type}
+      className={className}
+      onClick={onClick && handleClick}
+    >
       {text}
     </Button>
   );

@@ -12,8 +12,8 @@ const toDoSlice = createSlice({
       const newToDo = {
         id: state?.toDos?.length,
         title: action.payload.title,
-        status: action.payload.status,
-        isShowUpdateField: action.payload.isShowUpdateField,
+        status: false,
+        isShowUpdateField: false,
       };
       state.toDos.push(newToDo);
     },
@@ -29,10 +29,10 @@ const toDoSlice = createSlice({
     },
     Update(state, action) {
       state.toDos = [...state.toDos].map((task) => {
-        return task.id === action.payload.obj.id
+        return task.id === action.payload.id
           ? {
               ...task,
-              title: action.payload.obj.title,
+              title: action.payload.title,
               isShowUpdateField: false,
             }
           : task;
