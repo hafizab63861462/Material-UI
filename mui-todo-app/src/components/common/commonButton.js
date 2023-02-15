@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 const CommonButton = ({ variant, onClick, text, id, className }) => {
   const clickHandler = () => {
-    if (id !== undefined) {
+    if (id || id === 0) {
       onClick(id);
     } else {
       onClick();

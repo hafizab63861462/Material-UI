@@ -1,8 +1,8 @@
 import { TaskListContainer } from "../container/taskListContainer";
 import { AddTaskContainer } from "../container/addTaskContainer";
-import { Card, CardContent, CardActions } from "@material-ui/core";
+import { Card, CardContent, CardActions } from "@mui/material";
 import CommonButton from "./common/commonButton";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
     padding: "16px",
   },
   taskDone: {
-    border: "1px solid #808080 !important",
+    border: "1px solid #808080",
     padding: "6px 16px",
     width: 200,
     textAlign: "center",
@@ -29,7 +29,6 @@ const useStyles = makeStyles(() => ({
 const ToDoApp = ({ removeAllAction, totalTask, doneTask }) => {
   const classes = useStyles();
   const percentage = totalTask ? (doneTask / totalTask) * 100 : 0;
-  console.log(percentage);
   const divStyle = {
     backgroundImage: `linear-gradient(to right, yellow ${percentage}%, white 0%)`,
   };

@@ -1,4 +1,4 @@
-import { TextField } from "@material-ui/core";
+import TextField from "@mui/material/TextField";
 
 const CommonTextField = ({ label, variant, value, onChange }) => {
   return (

@@ -2,7 +2,7 @@ import TypographyText from "./common/typographyText";
 import CommonButton from "./common/commonButton";
 import CommonTextField from "./common/commonTextField";
 import { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/styles";
 import Stack from "@mui/material/Stack";
 
 const useStyles = makeStyles({
@@ -34,7 +34,7 @@ const AddTask = ({ addAction }) => {
 
       <TypographyText
         className={classes.heading}
-        variant="h1"
+        variant="h3"
         align="center"
         text="TODOLIST"
         gutterBottom

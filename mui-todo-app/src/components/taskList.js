@@ -1,7 +1,7 @@
 import * as React from "react";
-import { List, ListItem, ListItemText } from "@material-ui/core";
+import { List, ListItem, ListItemText } from "@mui/material";
 import Stack from "@mui/material/Stack";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/styles";
 import { useState } from "react";
 import CommonButton from "./common/commonButton";
 import CommonTextField from "./common/commonTextField";
@@ -11,12 +11,14 @@ const useStyles = makeStyles({
     textDecoration: "line-through",
   },
   editBtn: {
-    marginRight: "4px !important",
+    "&.MuiButton-root": {
+      marginRight: "4px",
+    },
   },
 
   listItem: {
-    paddingLeft: "0px !important",
-    paddingRight: "0px !important",
+    paddingLeft: "0px",
+    paddingRight: "0px",
     background: "#B8E2F2",
     "&:hover": {
       backgroundColor: "#89CFF0",
@@ -35,7 +37,8 @@ const TaskList = ({
   const classes = useStyles();
 
   const editTask = (id) => {
-    setUpdateValue(items[id].title);
+    const item = items.find((item) => item.id === id);
+    setUpdateValue(item.title);
     editAction({ id });
   };
 
@@ -51,9 +54,9 @@ const TaskList = ({
     <List>
       <hr />
       {items &&
-        items.map((item) =>
-          items[item.id]?.isShowUpdateField ? (
-            <React.Fragment key={item.id}>
+        items.map((item, index) =>
+          items[index]?.isShowUpdateField ? (
+            <React.Fragment key={index}>
               <ListItem className={classes.listItem}>
                 <Stack spacing={2} direction="row">
                   <CommonTextField
@@ -75,7 +78,7 @@ const TaskList = ({
               <hr />
             </React.Fragment>
           ) : (
-            <React.Fragment key={item.id}>
+            <React.Fragment key={index}>
               <ListItem className={classes.listItem}>
                 <CommonCheckBox
                   onClick={(id) => completeAction({ id })}
