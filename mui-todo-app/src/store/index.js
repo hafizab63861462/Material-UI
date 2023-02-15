@@ -21,7 +21,7 @@ const toDoSlice = createSlice({
       state.toDos = state.toDos.map((todo) => {
         return todo.id === action.payload.id
           ? { ...todo, isShowUpdateField: true }
-          : { ...todo, isShowUpdateField: false };
+          : todo;
       });
     },
     Delete(state, action) {
