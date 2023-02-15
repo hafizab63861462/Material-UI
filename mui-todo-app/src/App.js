@@ -1,4 +1,3 @@
-import "./App.css";
 import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/material";
 import { ToDoAppContainer } from "./container/ToDoAppContainer";

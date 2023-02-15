@@ -33,10 +33,6 @@ const TaskList = ({
 }) => {
   const classes = useStyles();
 
-  const handleEditTask = (id) => {
-    editAction({ id });
-  };
-
   return (
     <List>
       <hr />
@@ -48,7 +44,7 @@ const TaskList = ({
                 <InputForm
                   id={item?.id}
                   defaultValue={item?.title}
-                  label="Enter text here"
+                  label="Update text here"
                   variant="outlined"
                   registerName={"update_title"}
                   action={updateAction}
@@ -64,7 +60,7 @@ const TaskList = ({
             <Fragment key={index}>
               <ListItem className={classes.listItem}>
                 <CheckBox
-                  onClick={(id) => completeAction({ id })}
+                  onClick={() => completeAction({ id: item.id })}
                   id={item.id}
                   checked={item.status}
                 />

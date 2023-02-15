@@ -17,12 +17,14 @@ const InputForm = ({
   const { register, reset, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    let obj = {
-      id,
-      title: data[registerName],
-    };
-    action(obj);
-    reset();
+    if (data[registerName]) {
+      let obj = {
+        id,
+        title: data[registerName],
+      };
+      action(obj);
+      reset();
+    }
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

@@ -7,10 +7,13 @@ import ButtonField from "./common/ButtonField";
 
 const useStyles = makeStyles(() => ({
   card: {
-    width: 500,
+    maxHeight: "90%",
+    maxWidth: "90%",
+    "&.MuiCard-root": {
+      overflow: "auto",
+    },
     display: "flex",
     flexDirection: "column",
-    flexWrap: "wrap",
     margin: "auto",
   },
   removeButton: {

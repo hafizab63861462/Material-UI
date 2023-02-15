@@ -10,7 +10,7 @@ const toDoSlice = createSlice({
   reducers: {
     Add(state, action) {
       const newToDo = {
-        id: state?.toDos?.length,
+        id: state?.toDos[state?.toDos?.length - 1]?.id + 1 || 0,
         title: action.payload.title,
         status: false,
         isShowUpdateField: false,
@@ -21,7 +21,7 @@ const toDoSlice = createSlice({
       state.toDos = state.toDos.map((todo) => {
         return todo.id === action.payload.id
           ? { ...todo, isShowUpdateField: true }
-          : todo;
+          : { ...todo, isShowUpdateField: false };
       });
     },
     Delete(state, action) {
