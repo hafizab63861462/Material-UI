@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { toDoActions } from "../store";
-import ToDoApp from "../components/toDoApp";
+import ToDoApp from "../components/ToDoApp";
 
 function mapStateToProps(state = { toDos: [] }) {
   return {

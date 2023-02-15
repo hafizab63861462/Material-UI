@@ -1,6 +1,7 @@
 import "./App.css";
 import { makeStyles } from "@mui/styles";
-import { ToDoAppContainer } from "./container/toDoAppContainer";
+import { Box } from "@mui/material";
+import { ToDoAppContainer } from "./container/ToDoAppContainer";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -15,9 +16,9 @@ const useStyles = makeStyles(() => ({
 function App() {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <Box component="div" className={classes.root}>
       <ToDoAppContainer />
-    </div>
+    </Box>
   );
 }
 

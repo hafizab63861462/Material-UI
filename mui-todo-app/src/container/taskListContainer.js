@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import TaskList from "../components/taskList";
+import TaskList from "../components/TaskList";
 import { toDoActions } from "../store";
 
 function mapStateToProps(state = { toDos: [] }) {

@@ -1,11 +1,11 @@
-import * as React from "react";
+import React, { Fragment } from "react";
 import { List, ListItem, ListItemText } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { makeStyles } from "@mui/styles";
 import { useState } from "react";
-import CommonButton from "./common/commonButton";
-import CommonTextField from "./common/commonTextField";
-import CommonCheckBox from "./common/commonCheckBox";
+import ButtonField from "./common/ButtonField";
+import InputField from "./common/InputField";
+import CheckBox from "./common/CheckBox";
 const useStyles = makeStyles({
   strikeThrough: {
     textDecoration: "line-through",
@@ -36,13 +36,13 @@ const TaskList = ({
   const [updateValue, setUpdateValue] = useState("");
   const classes = useStyles();
 
-  const editTask = (id) => {
+  const handleEditTask = (id) => {
     const item = items.find((item) => item.id === id);
     setUpdateValue(item.title);
     editAction({ id });
   };
 
-  const updateTask = (id) => {
+  const handleUpdateTask = (id) => {
     let obj = {
       id,
       title: updateValue,
@@ -56,31 +56,31 @@ const TaskList = ({
       {items &&
         items.map((item, index) =>
           items[index]?.isShowUpdateField ? (
-            <React.Fragment key={index}>
+            <Fragment key={index}>
               <ListItem className={classes.listItem}>
                 <Stack spacing={2} direction="row">
-                  <CommonTextField
+                  <InputField
                     label="Enter text here"
                     variant="outlined"
                     value={updateValue}
                     onChange={(e) => setUpdateValue(e.target.value)}
                   />
 
-                  <CommonButton
+                  <ButtonField
                     variant="contained"
                     text="Update"
-                    onClick={updateTask}
+                    onClick={handleUpdateTask}
                     id={item.id}
                   />
                 </Stack>
                 <br />
               </ListItem>
               <hr />
-            </React.Fragment>
+            </Fragment>
           ) : (
-            <React.Fragment key={index}>
+            <Fragment key={index}>
               <ListItem className={classes.listItem}>
-                <CommonCheckBox
+                <CheckBox
                   onClick={(id) => completeAction({ id })}
                   id={item.id}
                   checked={item.status}
@@ -90,15 +90,15 @@ const TaskList = ({
                   className={item.status ? classes.strikeThrough : ""}
                 />
 
-                <CommonButton
+                <ButtonField
                   variant="contained"
                   className={classes.editBtn}
-                  onClick={editTask}
+                  onClick={handleEditTask}
                   id={item.id}
                   text="Edit"
                 />
 
-                <CommonButton
+                <ButtonField
                   variant="contained"
                   onClick={(id) => deleteAction({ id })}
                   id={item.id}
@@ -106,7 +106,7 @@ const TaskList = ({
                 />
               </ListItem>
               <hr />
-            </React.Fragment>
+            </Fragment>
           )
         )}
     </List>

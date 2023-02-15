@@ -1,7 +1,7 @@
 import Checkbox from "@mui/material/Checkbox";
 
-const CommonCheckBox = ({ onClick, id, checked }) => {
+const CheckBox = ({ onClick, id, checked }) => {
   return <Checkbox onClick={() => onClick(id)} checked={checked} />;
 };
 
-export default CommonCheckBox;
+export default CheckBox;

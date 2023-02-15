@@ -1,8 +1,9 @@
-import { TaskListContainer } from "../container/taskListContainer";
-import { AddTaskContainer } from "../container/addTaskContainer";
-import { Card, CardContent, CardActions } from "@mui/material";
-import CommonButton from "./common/commonButton";
 import { makeStyles } from "@mui/styles";
+import { Box } from "@mui/material";
+import { Card, CardContent, CardActions } from "@mui/material";
+import { TaskListContainer } from "../container/TaskListContainer";
+import { AddTaskContainer } from "../container/AddTaskContainer";
+import ButtonField from "./common/ButtonField";
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -41,10 +42,11 @@ const ToDoApp = ({ removeAllAction, totalTask, doneTask }) => {
       </CardContent>
 
       <CardActions className={classes.listRow}>
-        <div className={classes.taskDone} style={divStyle}>
+        <Box component="div" className={classes.taskDone} sx={divStyle}>
           {doneTask} of {totalTask} task Done
-        </div>
-        <CommonButton
+        </Box>
+
+        <ButtonField
           variant="contained"
           className={classes.removeButton}
           text="Remove All"

@@ -19,33 +19,30 @@ const toDoSlice = createSlice({
     },
     Edit(state, action) {
       state.toDos = state.toDos.map((todo) => {
-        if (todo.id === action.payload.id) {
-          return { ...todo, isShowUpdateField: true };
-        }
-        return todo;
+        return todo.id === action.payload.id
+          ? { ...todo, isShowUpdateField: true }
+          : todo;
       });
     },
     Delete(state, action) {
-      state.toDos = state.toDos.filter((task) => task.id != action.payload.id);
+      state.toDos = state.toDos.filter((task) => task.id !== action.payload.id);
     },
     Update(state, action) {
       state.toDos = [...state.toDos].map((task) => {
-        if (task.id === action.payload.obj.id) {
-          return {
-            ...task,
-            title: action.payload.obj.title,
-            isShowUpdateField: false,
-          };
-        }
-        return task;
+        return task.id === action.payload.obj.id
+          ? {
+              ...task,
+              title: action.payload.obj.title,
+              isShowUpdateField: false,
+            }
+          : task;
       });
     },
     Complete(state, action) {
       state.toDos = state.toDos.map((todo) => {
-        if (todo.id === action.payload.id) {
-          return { ...todo, status: !todo.status };
-        }
-        return todo;
+        return todo.id === action.payload.id
+          ? { ...todo, status: !todo.status }
+          : todo;
       });
     },
     RemoveAll(state) {

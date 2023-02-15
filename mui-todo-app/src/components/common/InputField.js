@@ -1,6 +1,6 @@
 import TextField from "@mui/material/TextField";
 
-const CommonTextField = ({ label, variant, value, onChange }) => {
+const InputField = ({ label, variant, value, onChange }) => {
   return (
     <TextField
       label={label}
@@ -12,4 +12,4 @@ const CommonTextField = ({ label, variant, value, onChange }) => {
   );
 };
 
-export default CommonTextField;
+export default InputField;
